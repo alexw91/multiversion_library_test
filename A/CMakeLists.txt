@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 
 project(A)
 
@@ -15,4 +15,4 @@ target_link_libraries(${PROJECT_NAME}.static C_v1.static)
 
 
 add_library(${PROJECT_NAME}.shared SHARED ${SOURCES})
-target_link_libraries(${PROJECT_NAME}.shared C_v1.static)
+target_link_libraries(${PROJECT_NAME}.shared PRIVATE C_v1.shared)

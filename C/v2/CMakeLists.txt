@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 
 project(C_v2)
 
@@ -9,5 +9,5 @@ set(SOURCES
 add_library(${PROJECT_NAME}.static STATIC ${SOURCES})
 set_property(TARGET ${PROJECT_NAME}.static PROPERTY POSITION_INDEPENDENT_CODE ON)
 
-# add_library(${PROJECT_NAME}.shared SHARED ${SOURCES})
+add_library(${PROJECT_NAME}.shared SHARED ${SOURCES})
 
