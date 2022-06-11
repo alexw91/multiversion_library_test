@@ -35,7 +35,7 @@ void * dlsym_helper(void *handle, char const *symbol){
 
 int main(int argc, char **argv)
 {
-    void *jni_v1_handle = dlopen_helper("./jni_v1.so");
+    void *jni_v1_handle = dlopen_helper("./lib1/jni_v1.so");
     int (*call_jni_v1)(void);
     call_jni_v1 = dlsym_helper(jni_v1_handle, "call_jni_v1");
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 
 
 
-    void *jni_v2_handle = dlopen_helper("./jni_v2.so");
+    void *jni_v2_handle = dlopen_helper("./lib2/jni_v2.so");
     int (*call_jni_v2)(void);
     call_jni_v2 = dlsym_helper(jni_v2_handle, "call_jni_v2");
 
