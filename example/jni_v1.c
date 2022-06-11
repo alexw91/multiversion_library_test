@@ -1,3 +1,4 @@
+#include <link.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <dlfcn.h>
@@ -33,11 +34,24 @@ void * dlsym_helper(void *handle, char const *symbol){
     return result;
 }
 
+//static int callback(struct dl_phdr_info *info, size_t size, void *data)
+//{
+//    int j;
+//
+//   printf("name=%s (%d segments)\n", info->dlpi_name, info->dlpi_phnum);
+//
+//   for (j = 0; j < info->dlpi_phnum; j++){
+//         printf("\t\t header %2d: address=%10p\n", j, (void *) (info->dlpi_addr + info->dlpi_phdr[j].p_vaddr));
+//   }
+//    return 0;
+//}
+
 
 int call_jni_v1(void)
 {
     printf("Entered call_jni_v1()...\n");
-    dlopen_helper("./libcrypto_v1.so");
+//    dl_iterate_phdr(callback, NULL);
+//    dlopen_helper("./libcrypto_v1.so");
     call_crypto();
     return 0;
 }

@@ -5,7 +5,7 @@
 #include "crypto.h"
 
 void* dlopen_helper(char const *path) {
-    void *result = dlopen(path, RTLD_LAZY | RTLD_LOCAL | RTLD_DEEPBIND);
+    void *result = dlopen(path, RTLD_LAZY | RTLD_LOCAL);
 
     if(dlopen_helper == NULL) {
         fprintf(stderr, "%s\n", dlerror());
@@ -37,7 +37,7 @@ int call_jni_v2(void)
 {
     printf("Entered call_jni_v2()...\n");
 
-    dlopen_helper("./libcrypto_v2.so");
+//    dlopen_helper("./libcrypto_v2.so");
 
     call_crypto();
     return 0;

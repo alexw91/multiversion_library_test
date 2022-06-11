@@ -22,12 +22,12 @@ gcc ${LDFLAGS} -o libcrypto_v2.so crypto_v2.o ${LIBS}
 
 #JNI v1
 gcc ${CFLAGS} -o jni_v1.o jni_v1.c 
-gcc ${LDFLAGS} -o jni_v1.so jni_v1.o ${LIBS} #-L./ -lcrypto_v1
+gcc ${LDFLAGS} -o jni_v1.so jni_v1.o ${LIBS} -L./ -lcrypto_v1 -Wl,-rpath,. 
 
 
 #JNI v2
 gcc ${CFLAGS} -o jni_v2.o jni_v2.c 
-gcc ${LDFLAGS} -o jni_v2.so jni_v2.o ${LIBS} #-L./ -lcrypto_v2
+gcc ${LDFLAGS} -o jni_v2.so jni_v2.o ${LIBS} -L./ -lcrypto_v2 -Wl,-rpath,. 
 
 
 gcc -o java java.c ${LIBS}

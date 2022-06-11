@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 
+#include "crypto.h"
 
 void* dlopen_helper(char const *path) {
     void *result = dlopen(path, RTLD_LAZY);
@@ -35,16 +36,17 @@ void * dlsym_helper(void *handle, char const *symbol){
 int main(int argc, char **argv)
 {
     void *jni_v1_handle = dlopen_helper("./jni_v1.so");
-    void *jni_v2_handle = dlopen_helper("./jni_v2.so");;
-
     int (*call_jni_v1)(void);
-    int (*call_jni_v2)(void);
-
     call_jni_v1 = dlsym_helper(jni_v1_handle, "call_jni_v1");
-    call_jni_v2 = dlsym_helper(jni_v2_handle, "call_jni_v2");
 
     printf("Calling call_jni_v1()...\n");
     call_jni_v1();
+
+
+
+    void *jni_v2_handle = dlopen_helper("./jni_v2.so");
+    int (*call_jni_v2)(void);
+    call_jni_v2 = dlsym_helper(jni_v2_handle, "call_jni_v2");
 
     printf("Calling call_jni_v2()...\n");
     call_jni_v2();
